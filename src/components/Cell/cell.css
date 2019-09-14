@@ -1,0 +1,33 @@
+.cell {
+    border: 1px solid rgb(100, 100, 100);
+    cursor: pointer;
+    display: inline-block;
+    height: 10px;
+    margin: 2px;
+    min-height: 20px;
+    min-width: 20px;
+}
+
+.cell-light {
+    background: black;
+}
+
+.cell-dark {
+    background: gold;
+}
+
+.cell-blue {
+    background: steelblue;
+}
+
+.cell-green {
+    background: lightgreen;
+}
+
+.cell-wild {
+    background: purple;
+}
+
+.fill-false {
+    background: transparent !important;
+}
