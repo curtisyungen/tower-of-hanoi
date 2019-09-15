@@ -1,81 +1,25 @@
 import React, { Component } from 'react';
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import logger from "redux-logger";
-import './App.css';
+import { connect } from 'react-redux';
+import { move, reset } from "./redux.js";
+import Ring from "./components/ring";
+import Tower from "./components/tower";
+import "./App.css";
 
-const mathReducer = (state = {
-  result: 1,
-  lastValues: [],
-}, action) => {
-  switch (action.type) {
-    case "ADD":
-      state = {
-        ...state,
-        result: state.result + action.payload,
-        lastValues: [...state.lastValues, action.payload],
-      };
-      break;
-    case "SUBTRACT":
-        state = {
-          ...state,
-          result: state.result - action.payload,
-          lastValues: [...state.lastValues, action.payload],
-        };
-      break;
-  }
-  return state;
+const mapStateToProps = (state) => {
+  return {
+
+  };
 }
 
-const userReducer = (state = {
-  name: "Curtis",
-  age: 29,
-}, action) => {
-  switch (action.type) {
-    case "SET_NAME":
-      state = {
-        ...state,
-        name: action.payload,
-      };
-      break;
-    case "SET_AGE":
-        state = {
-          ...state,
-          age: action.payload,
-        };
-      break;
-  }
-  return state;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setName: (name) => {
+      dispatch({
+
+      });
+    }
+  };
 }
-
-const myLogger = (store) => (next) => (action) => {
-  console.log("Logged action", action);
-  next(action);
-}
-
-const store = createStore(
-  combineReducers({mathReducer, userReducer}), 
-  {}, 
-  applyMiddleware(logger)
-);
-
-// store.subscribe(() => {
-//   console.log("Store updated", store.getState());
-// });
-
-store.dispatch({
-  type: "ADD",
-  payload: 10
-});
-
-store.dispatch({
-  type: "ADD",
-  payload: 80
-});
-
-store.dispatch({
-  type: "SET_AGE",
-  payload: 30
-});
 
 class App extends Component {
 
@@ -87,13 +31,39 @@ class App extends Component {
     }
   }
 
+  getBoard = () => {
+    let board = [];
+    let towers = this.props.towers;
+    for (var i = 0; i < towers.length; i++) {
+      let tower = towers[i];
+      let ringArr = [];
+      for (var j = 0; j < tower.length; j++) {
+        ringArr.push(
+          <Ring
+            key={j}
+            num={tower[j]}
+            tower={i}
+            position={j}
+          />
+        )
+      }
+
+      board.push(<Tower key={i} num={i} rings={ringArr} />);
+    }
+
+    return board;
+  }
+
   render() {
     return (
-      <div>
-
+      <div className="container">
+        <h1>Towers of Hanoi</h1>
+        <div className="board">
+          {this.getBoard}
+        </div>
       </div>
     )
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
