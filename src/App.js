@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Tower from "./components/tower";
 import Ring from "./components/ring";
+import { moveRing, resetGame } from "./redux/actions";
 import "./App.css";
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-
+    
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    moveRing: towers => dispatch(moveRing(towers)),
+    resetGame: () => resetGame()
   };
 }
 
@@ -32,14 +35,18 @@ class App extends Component {
     for (var i=0; i<3; i++) {
       towers.push(
         <Tower
-          key={i}
-          id={i}
-          rings={[]}
+          towerId={i}
+          rings={ i===0 ? [5, 4, 3, 2, 1] : []}
+          moveRing={this.moveRing}
         />
       )
     }
 
     return towers;
+  }
+
+  moveRing = (ringId, tower) => {
+    console.log(ringId, tower);
   }
 
   render() {

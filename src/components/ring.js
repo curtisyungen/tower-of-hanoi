@@ -1,24 +1,22 @@
 import React from "react";
 
-function Ring (props) {
-
-    let style = {
-        width: `${props.num * 25 + 100}px`,
-        backgroundColor: `hsl(${props.num * 75 % 360}, 100%, 45%)`,
-    }
-
+const Ring = ({ ringId, vertPosition, tower, moveRing }) => {
     return (
-        <div
-            style={
-                {bottom: `${(props.position) * 50}px`}
-            }
-            className={`ring-${props.num} ringContainer`}
+        <div 
+            id={ringId}
+            className={`ring`}
+            onMouseDown={() => moveRing(ringId, tower)}
+            style={{
+                backgroundColor: `rgb(${ringId * 30},${ringId * 30}, ${ringId * 30})`,
+                bottom: `${vertPosition * 50}px`,
+                cursor: "pointer",
+                height: "50px",
+                left: `${tower * 25}%`,
+                position: "absolute",
+                width: `${ringId * 30}px`,
+            }}
         >
-            <div
-                onMouseDown={this.props.grabRing(props.num, props.rod)}
-                style={style}
-                className="ring"
-            />   
+            {ringId}
         </div>
     )
 }
