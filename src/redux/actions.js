@@ -10,11 +10,11 @@ export const RESET = "RESET";
 
 // ACTION CREATORS
 // Functions that create actions.
-export const moveRing = (ring) => {
+export const moveRing = (towers) => {
     return {
         type: MOVE,
         payload: {
-            ring: ring,
+            towers: towers,
         }
     }
 }
