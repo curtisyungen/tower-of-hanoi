@@ -29,6 +29,7 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
 
+  // Initiates the three towers with all five rings on left-most tower
   getTowers = () => {
     let towers = [];
 
