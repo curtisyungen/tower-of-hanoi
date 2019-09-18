@@ -11,6 +11,7 @@ export const RESET = "RESET";
 // ACTION CREATORS
 // Functions that create actions.
 export const moveRing = (towers) => {
+    console.log(towers);
     return {
         type: MOVE,
         payload: towers,
