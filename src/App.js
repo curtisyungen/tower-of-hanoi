@@ -13,8 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    moveRing: () => dispatch(moveRing),
-    resetGame: () => dispatch(resetGame)
+    bindActionCreators({resetGame: resetGame}, dispatch)
   };
 }
 
