@@ -6,18 +6,16 @@ import { moveRing, resetGame } from "./redux/actions";
 import "./App.css";
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
-  console.log(ownProps);
-
   return {
-    test: true,
+    towers: state.towers,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
+  console.log("Dispatch", dispatch);
   return {
-    moveRing: towers => dispatch(moveRing(towers)),
-    resetGame: () => resetGame()
+    moveRing: () => dispatch(moveRing),
+    resetGame: () => dispatch(resetGame)
   };
 }
 
@@ -67,6 +65,7 @@ class App extends Component {
     let endX = 0, endY = 0;
 
     document.onmousemove = dragRing;
+    document.onmouseup = dropRing;
   
     function dragRing(event) {
       endX = event.clientX;

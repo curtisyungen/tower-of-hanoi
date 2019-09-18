@@ -13,9 +13,7 @@ export const RESET = "RESET";
 export const moveRing = (towers) => {
     return {
         type: MOVE,
-        payload: {
-            towers: towers,
-        }
+        payload: towers,
     }
 }
 
@@ -23,8 +21,6 @@ export const resetGame = () => {
     let towers = [[5, 4, 3, 2, 1], [], []];
     return {
         type: RESET,
-        payload: {
-            towers: towers,
-        }
+        payload: towers,
     }
 }
