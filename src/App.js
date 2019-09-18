@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   console.log(ownProps);
 
   return {
-    
+    test: true,
   }
 }
 
