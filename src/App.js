@@ -86,7 +86,7 @@ class App extends Component {
       document.onmousemove = null;
       document.onmouseup = null;
 
-      let towers = $this.props.towers;
+      let towers = [[4, 3, 2, 1], [5], []];
       $this.props.moveRing(towers);
     }
   }
