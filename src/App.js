@@ -13,7 +13,10 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({resetGame: resetGame}, dispatch)
+  return bindActionCreators({
+    resetGame: resetGame,
+    moveRing: moveRing,
+  }, dispatch)
 }
 
 // ====================================================================
@@ -107,7 +110,7 @@ class App extends Component {
             className="btn btn-danger btn-sm resetButton"
             onClick={this.resetGame}
           >
-
+            Reset
           </button>
         </div>
       </div>
