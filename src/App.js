@@ -35,6 +35,8 @@ class App extends Component {
     this.state = {
       towers: null,
     }
+
+    this.dropRing = this.dropRing.bind(this);
   }
 
   // Initiates the three towers with all five rings on left-most tower
@@ -88,10 +90,6 @@ class App extends Component {
       // let towers = this.props.towers;
       this.props.moveRing();
     }
-
-    this.setState({
-      test: !this.state.test,
-    });
   }
 
   resetGame = () => {
