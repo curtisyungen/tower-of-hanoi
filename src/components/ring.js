@@ -15,7 +15,7 @@ const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
                 position: "absolute",
                 transform: `translate(${-(ringId * 30) + 25}px)`,
                 width: `${ringId * 60}px`,
-                zIndex: 10,
+                zIndex: 100,
             }}
         >
             {ringId}

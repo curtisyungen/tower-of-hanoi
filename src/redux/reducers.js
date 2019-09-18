@@ -27,12 +27,12 @@ const reducer = (state = initialState, action) => {
         case MOVE:
             console.log("Reducer: Move", state);
             return Object.assign({}, state, {   // First parameter must be empty object
-                towers: state.towers
+                towers: action.towers
             });
         case RESET:
             console.log("Reducer: Reset");
             return Object.assign({}, state, {
-                towers: state.towers
+                towers: action.towers
             });
         default: 
             return state;   // Return previous state for any unknown action

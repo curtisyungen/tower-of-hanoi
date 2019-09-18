@@ -1,29 +1,43 @@
 import React from "react";
 import Ring from "./ring";
 
-const Tower = ({ id, towerId, rings = [], clickRing }) => {
+const Tower = ({ id, towerId, rings = [], clickRing, clickTower }) => {
     return (
         <div 
-            id={towerId}
-            className={`tower`}
-            style={{
-                backgroundColor: "black",
-                left: `${(id * 25) + 10}%`,
-                height: "500px",
-                marginTop: "50px",
-                position: "absolute",
-                width: "50px"
-            }}
+        id={`towerWrapper${id+1}`}
+        className="towerWrapper" 
+        style={{
+            border: "1px solid black",
+            display: "inline-block",
+            height: "551px",
+            position: "relative",
+            width: "300px",
+        }}
         >
-            {rings.map((ring, index) => (
-                <Ring
-                    key={index}
-                    ringId={ring}
-                    vertPosition={index}
-                    tower={towerId}
-                    clickRing={clickRing}
-                />
-            ))}
+            <div 
+                id={towerId}
+                className={`tower`}
+                onClick={clickTower}
+                style={{
+                    backgroundColor: "black",
+                    height: "500px",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    marginTop: "50px",
+                    width: "50px",
+                    zIndex: 1,
+                }}
+            >
+                {rings.map((ring, index) => (
+                    <Ring
+                        key={index}
+                        ringId={ring}
+                        vertPosition={index}
+                        tower={towerId}
+                        clickRing={clickRing}
+                    />
+                ))}
+            </div>
         </div>
     )
 }

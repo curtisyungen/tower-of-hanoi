@@ -49,11 +49,17 @@ class App extends Component {
           towerId={`tower${i+1}`}
           rings={ i===0 ? [5, 4, 3, 2, 1] : []}
           clickRing={this.clickRing}
+          clickTower={this.clickTower}
         />
       )
     }
 
     return towers;
+  }
+
+  clickTower = (event) => {
+    event.preventDefault();
+    // console.log(event.clientX, event.clientY);
   }
 
   // Allows user to drag and drop rings between towers
@@ -74,15 +80,31 @@ class App extends Component {
       endY = event.clientY;
 
       ring.style.left = `${(endX - startX)}px`;
-      
       document.onmouseup = dropRing;
     }
 
     function dropRing() {
-      let tower1 = document.getElementById("tower1").offsetLeft;
-      let tower2 = document.getElementById("tower2").offsetLeft;
-      let tower3 = document.getElementById("tower3").offsetLeft;
-      
+
+      // Get center of subject ring
+      let ringRect = document.getElementById(ringId).getBoundingClientRect();
+      let ringCenter = (ringRect.left + ringRect.right) / 2;
+      let ringWidth = ring.offsetWidth;
+
+      // Get extents of tower wrappers to determine where ring was dropped
+      let tower1 = document.getElementById("towerWrapper1").getBoundingClientRect();
+      let tower2 = document.getElementById("towerWrapper2").getBoundingClientRect();
+      let tower3 = document.getElementById("towerWrapper3").getBoundingClientRect();
+     
+      if (ringCenter >= tower1.left && ringCenter < tower1.right) {
+        ring.style.left = `${tower1.right - 306}px`;
+      } 
+      else if (ringCenter >= tower2.left && ringCenter < tower2.right) {
+        ring.style.left = `${tower2.right - 306}px`;
+      }
+      else if (ringCenter >= tower3.left && ringCenter < tower3.right) {
+        ring.style.left = `${tower3.right - 306}px`;
+      }
+
       document.onmousemove = null;
       document.onmouseup = null;
 
@@ -97,9 +119,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="mainContainer">
         <h1>Towers of Hanoi</h1>
-        <div className="towersContainer">
+        <div className="towersContainer" id="towersContainer">
           {this.getTowers()}
         </div>
         <div className="resetButton">
