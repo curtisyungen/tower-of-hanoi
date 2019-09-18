@@ -29,8 +29,9 @@ const reducer = (state = initialState, action) => {
                 towers: state.towers
             });
         case RESET:
+            console.log("Reset");
             return Object.assign({}, state, {
-                towers: [[5, 4, 3, 2, 1], [], []],
+                towers: state.towers
             });
         default: 
             return state;   // Return previous state for any unknown action
