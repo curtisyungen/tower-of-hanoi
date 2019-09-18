@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
 import Tower from "./components/tower";
 import Ring from "./components/ring";
