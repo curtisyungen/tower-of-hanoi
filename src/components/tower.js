@@ -1,7 +1,7 @@
 import React from "react";
 import Ring from "./ring";
 
-const Tower = ({ towerId, rings = [], moveRing }) => {
+const Tower = ({ towerId, rings = [], clickRing }) => {
     return (
         <div 
             id={towerId}
@@ -21,7 +21,7 @@ const Tower = ({ towerId, rings = [], moveRing }) => {
                     ringId={ring}
                     vertPosition={index}
                     tower={towerId}
-                    moveRing={moveRing}
+                    clickRing={clickRing}
                 />
             ))}
         </div>

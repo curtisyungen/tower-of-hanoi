@@ -38,7 +38,7 @@ class App extends Component {
         <Tower
           towerId={i}
           rings={ i===0 ? [5, 4, 3, 2, 1] : []}
-          moveRing={this.moveRing}
+          clickRing={this.clickRing}
         />
       )
     }
@@ -46,8 +46,29 @@ class App extends Component {
     return towers;
   }
 
-  moveRing = (ringId, tower) => {
-    console.log(ringId, tower);
+  // Allows user to drag and drop rings between towers
+  clickRing = (ringId, tower, event) =>  {
+    event.preventDefault();
+
+    let ring = document.getElementById(ringId);
+    let startX = event.clientX, startY = event.clientY;
+    let endX = 0, endY = 0;
+
+    document.onmousemove = dragRing;
+  
+    function dragRing(event) {
+      endX = event.clientX;
+      endY = event.clientY;
+      
+      ring.style.left = `${(endX - startX)}px`;
+      
+      document.onmouseup = dropRing;
+    }
+
+    function dropRing() {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    }
   }
 
   render() {

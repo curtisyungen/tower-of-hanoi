@@ -1,11 +1,11 @@
 import React from "react";
 
-const Ring = ({ ringId, vertPosition, tower, moveRing }) => {
+const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
     return (
         <div 
             id={ringId}
             className={`ring`}
-            onMouseDown={() => moveRing(ringId, tower)}
+            onMouseDown={(event) => clickRing(ringId, tower, event)}
             style={{
                 backgroundColor: `rgb(${ringId * 30},${ringId * 30}, ${ringId * 30})`,
                 bottom: `${vertPosition * 50}px`,
@@ -14,6 +14,7 @@ const Ring = ({ ringId, vertPosition, tower, moveRing }) => {
                 left: `${tower * 25}%`,
                 position: "absolute",
                 width: `${ringId * 30}px`,
+                zIndex: 10,
             }}
         >
             {ringId}
