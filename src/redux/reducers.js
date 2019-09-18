@@ -25,11 +25,12 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case MOVE:
+            console.log("Reducer: Move", state);
             return Object.assign({}, state, {   // First parameter must be empty object
                 towers: state.towers
             });
         case RESET:
-            console.log("Reset");
+            console.log("Reducer: Reset");
             return Object.assign({}, state, {
                 towers: state.towers
             });
