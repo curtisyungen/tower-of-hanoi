@@ -13,8 +13,8 @@ const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
                 height: "50px",
                 left: `${tower * 25}%`,
                 position: "absolute",
-                transform: `translate(-${ringId * 15}px)`,
-                width: `${ringId * 30}px`,
+                transform: `translate(${-(ringId * 15) + 25}px)`,
+                width: `${(ringId * 50) + 20}px`,
                 zIndex: 10,
             }}
         >
