@@ -5,11 +5,9 @@ import Ring from "./components/ring";
 import { moveRing, resetGame } from "./redux/actions";
 import "./App.css";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   console.log(state);
-  return {
-    
-  };
+  console.log(ownProps);
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -33,7 +31,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-
+      test: false,
     }
   }
 
@@ -83,6 +81,10 @@ class App extends Component {
       document.onmousemove = null;
       document.onmouseup = null;
     }
+
+    this.setState({
+      test: !this.state.test,
+    });
   }
 
   render() {
