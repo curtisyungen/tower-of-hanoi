@@ -29,6 +29,14 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+    }
+  }
+
   // Initiates the three towers with all five rings on left-most tower
   getTowers = () => {
     let towers = [];
@@ -36,7 +44,9 @@ class App extends Component {
     for (var i=0; i<3; i++) {
       towers.push(
         <Tower
-          towerId={i}
+          key={i}
+          id={i}
+          towerId={`tower${i+1}`}
           rings={ i===0 ? [5, 4, 3, 2, 1] : []}
           clickRing={this.clickRing}
         />
@@ -59,13 +69,17 @@ class App extends Component {
     function dragRing(event) {
       endX = event.clientX;
       endY = event.clientY;
-      
+
       ring.style.left = `${(endX - startX)}px`;
       
       document.onmouseup = dropRing;
     }
 
     function dropRing() {
+      let tower1 = document.getElementById("tower1").offsetLeft;
+      let tower2 = document.getElementById("tower2").offsetLeft;
+      let tower3 = document.getElementById("tower3").offsetLeft;
+      
       document.onmousemove = null;
       document.onmouseup = null;
     }

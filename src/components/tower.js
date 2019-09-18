@@ -1,14 +1,14 @@
 import React from "react";
 import Ring from "./ring";
 
-const Tower = ({ towerId, rings = [], clickRing }) => {
+const Tower = ({ id, towerId, rings = [], clickRing }) => {
     return (
         <div 
             id={towerId}
             className={`tower`}
             style={{
                 backgroundColor: "black",
-                left: `${(towerId * 25) + 10}%`,
+                left: `${(id * 25) + 10}%`,
                 height: "500px",
                 marginTop: "50px",
                 position: "absolute",
@@ -17,7 +17,7 @@ const Tower = ({ towerId, rings = [], clickRing }) => {
         >
             {rings.map((ring, index) => (
                 <Ring
-                    key={ring}
+                    key={index}
                     ringId={ring}
                     vertPosition={index}
                     tower={towerId}
