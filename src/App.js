@@ -32,7 +32,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      test: false,
+      towers: null,
     }
   }
 
@@ -84,7 +84,7 @@ class App extends Component {
       document.onmousemove = null;
       document.onmouseup = null;
 
-      console.log("Props", this.props);
+      console.log("State", this.state);
       // let towers = this.props.towers;
       // this.props.moveRing(towers);
     }

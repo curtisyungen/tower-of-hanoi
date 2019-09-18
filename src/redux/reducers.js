@@ -6,7 +6,6 @@ import { MOVE, RESET } from "./actions";
 // ====================================================================
 
 const initialState = {
-    test: false,
     towers: [
         [5, 4, 3, 2, 1],
         [],
