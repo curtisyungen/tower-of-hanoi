@@ -12,7 +12,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log("Dispatch", dispatch);
   return {
     moveRing: () => dispatch(moveRing),
     resetGame: () => dispatch(resetGame)
@@ -85,8 +84,9 @@ class App extends Component {
       document.onmousemove = null;
       document.onmouseup = null;
 
-      let towers = this.props.towers;
-      this.props.moveRing(towers);
+      console.log("Props", this.props);
+      // let towers = this.props.towers;
+      // this.props.moveRing(towers);
     }
 
     this.setState({
