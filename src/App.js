@@ -84,7 +84,6 @@ class App extends Component {
       document.onmousemove = null;
       document.onmouseup = null;
 
-      console.log("Props", [...this.props]);
       // let towers = this.props.towers;
       // this.props.moveRing(towers);
     }
@@ -94,12 +93,24 @@ class App extends Component {
     });
   }
 
+  resetGame = () => {
+    this.props.resetGame();
+  }
+
   render() {
     return (
       <div className="container">
         <h1>Towers of Hanoi</h1>
         <div className="towersContainer">
           {this.getTowers()}
+        </div>
+        <div className="resetButton">
+          <button
+            className="btn btn-danger btn-sm resetButton"
+            onClick={this.resetGame}
+          >
+
+          </button>
         </div>
       </div>
     )
