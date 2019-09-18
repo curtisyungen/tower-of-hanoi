@@ -61,6 +61,7 @@ class App extends Component {
     event.preventDefault();
 
     let ring = document.getElementById(ringId);
+    let startTower = tower, endTower = tower;
     let startX = event.clientX, startY = event.clientY;
     let endX = 0, endY = 0;
 
@@ -83,6 +84,9 @@ class App extends Component {
       
       document.onmousemove = null;
       document.onmouseup = null;
+
+      let towers = this.props.towers;
+      this.props.moveRing(towers);
     }
 
     this.setState({

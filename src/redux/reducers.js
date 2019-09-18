@@ -27,9 +27,7 @@ const reducer = (state = initialState, action) => {
     switch(action.type) {
         case MOVE:
             return Object.assign({}, state, {   // First parameter must be empty object
-                towers: [
-                    ...state.towers,
-                ]
+                towers: state.towers
             });
         case RESET:
             return Object.assign({}, state, {
