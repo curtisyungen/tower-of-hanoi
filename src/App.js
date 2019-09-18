@@ -35,8 +35,6 @@ class App extends Component {
     this.state = {
       towers: null,
     }
-
-    this.dropRing = this.dropRing.bind(this);
   }
 
   // Initiates the three towers with all five rings on left-most tower
@@ -62,6 +60,7 @@ class App extends Component {
   clickRing = (ringId, tower, event) =>  {
     event.preventDefault();
 
+    let $this = this;
     let ring = document.getElementById(ringId);
     let startTower = tower, endTower = tower;
     let startX = event.clientX, startY = event.clientY;
@@ -88,7 +87,7 @@ class App extends Component {
       document.onmouseup = null;
 
       // let towers = this.props.towers;
-      this.props.moveRing();
+      $this.props.moveRing();
     }
   }
 
