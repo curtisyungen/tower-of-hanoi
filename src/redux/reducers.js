@@ -25,43 +25,47 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case MOVE:
+            // Get topmost ring on starting tower
+            let startTopRing = state.towers[action.payload.startTower].slice(-1)[0];
 
-            // Find topmost ring
-            let startTowerArr = state.towers[action.payload.startTower];
-            let topRing = startTowerArr.slice(-1)[0];
+            // Get topmost ring on ending tower
+            let endTopRing = state.towers[action.payload.endTower].slice(-1)[0];
 
-            // Check that ring isn't smaller on end tower
-            let endTowerArr = state.towers[action.payload.endTower];
-            let topRingEnd = endTowerArr.slice(-1)[0];
-
-            if (topRingEnd < topRing) {
-                console.log("Error.");
+            // Prevent larger ring from being placed on smaller one
+            if (endTopRing < startTopRing) {
+                alert("Cannot place larger ring on smaller one, you dolt!");
                 return state;
             }
 
-            // console.log("Success.");
+            // Get all rings on starting and ending towers
             let newStartArr = startTowerArr.slice(0);
             let newEndArr = endTowerArr.slice(0);
 
+            // Remove top ring from starting tower
             newStartArr.pop();
-            newEndArr.push(topRing);
 
+            // Add ring to ending tower
+            newEndArr.push(startTopRing);
+
+            // Get array with all three towers and store in new array
             let newTowers = state.towers.slice(0);
-            let startTowerId = action.payload.startTower;
-            let endTowerId = action.payload.endTower;
 
-            newTowers[startTowerId] = newStartArr;
-            newTowers[endTowerId] = newEndArr;
+            // Update new towers array with new starting and ending towers
+            newTowers[action.payload.startTower] = newStartArr;
+            newTowers[action.payload.endTower] = newEndArr;
             
-            return Object.assign({}, state, {   // First parameter must be empty object
+            // Return new object containing updated state
+            return Object.assign({}, state, {
                 towers: newTowers
             });
 
         case RESET:
+            // Return new object containing initial state
             return Object.assign({}, initialState);
 
         default: 
-            return state;   // Return previous state for any unknown action
+            // Return previous state for any unknown action
+            return state;   
     }
 }
 
