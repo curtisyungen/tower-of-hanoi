@@ -25,15 +25,41 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case MOVE:
-            console.log("Reducer: Move", state);
+
+            // Find topmost ring
+            let startTowerArr = state.towers[action.payload.startTower];
+            let topRing = startTowerArr.slice(-1)[0];
+
+            // Check that ring isn't smaller on end tower
+            let endTowerArr = state.towers[action.payload.endTower];
+            let topRingEnd = endTowerArr.slice(-1)[0];
+
+            if (topRingEnd < topRing) {
+                console.log("Error.");
+                return state;
+            }
+
+            // console.log("Success.");
+            let newStartArr = startTowerArr.slice(0);
+            let newEndArr = endTowerArr.slice(0);
+
+            newStartArr.pop();
+            newEndArr.push(topRing);
+
+            let newTowers = state.towers.slice(0);
+            let startTowerId = action.payload.startTower;
+            let endTowerId = action.payload.endTower;
+
+            newTowers[startTowerId] = newStartArr;
+            newTowers[endTowerId] = newEndArr;
+            
             return Object.assign({}, state, {   // First parameter must be empty object
-                towers: action.payload
+                towers: newTowers
             });
+
         case RESET:
-            console.log("Reducer: Reset");
-            return Object.assign({}, state, {
-                towers: action.payload
-            });
+            return Object.assign({}, initialState);
+
         default: 
             return state;   // Return previous state for any unknown action
     }

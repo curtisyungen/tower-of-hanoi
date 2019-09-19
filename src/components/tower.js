@@ -6,19 +6,20 @@ import Ring from "./ring";
 // rings: array, rings that are currently on the tower
 // clickRing: function, allows each ring to be dragged and dropped. Passed down to child element.
 
-const Tower = ({ id, towerId, rings = [], clickRing }) => {
+const Tower = ({ id, towerId, rings = [] }) => {
     return (
         <div 
-        id={`towerWrapper${id+1}`}
-        className="towerWrapper" 
-        style={{
-            border: "1px solid black",
-            display: "inline-block",
-            height: "551px",
-            position: "relative",
-            width: "300px",
-        }}
+            id={`towerWrapper${id+1}`}
+            className="towerWrapper" 
+            style={{
+                border: "1px solid lightgray",
+                display: "inline-block",
+                height: "551px",
+                position: "relative",
+                width: "300px",
+            }}
         >
+            {rings}
             <div 
                 id={towerId}
                 className={`tower`}
@@ -31,17 +32,7 @@ const Tower = ({ id, towerId, rings = [], clickRing }) => {
                     width: "50px",
                     zIndex: 1,
                 }}
-            >
-                {rings.map((ring, index) => (
-                    <Ring
-                        key={index}
-                        ringId={ring}
-                        vertPosition={index}
-                        tower={id}
-                        clickRing={clickRing}
-                    />
-                ))}
-            </div>
+            />
         </div>
     )
 }

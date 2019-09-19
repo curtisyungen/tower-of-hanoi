@@ -6,6 +6,6 @@ import reducer from "./reducers";
 // An object that holds application state.
 // ====================================================================
 
-const store = createStore(reducer, window.STATE_FROM_SERVER);
+const store = createStore(reducer, window.STATE_FROM_SERVER, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default store;

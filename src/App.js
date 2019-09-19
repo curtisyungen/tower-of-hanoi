@@ -6,10 +6,9 @@ import Ring from "./components/ring";
 import { moveRing, resetGame } from "./redux/actions";
 import "./App.css";
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    towers: state.towers,
-  }
+const mapStateToProps = (state) => {
+  let newState = Object.assign({}, state);
+  return newState;
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -29,31 +28,36 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      towers: null,
-    }
-  }
-
   // Initiates the three towers with all five rings on left-most tower
   getTowers = () => {
-    let towers = [];
+    let towerArr = [];
+    let towers = this.props.towers;
+    for (var i=0; i<towers.length; i++) {
+      let tower = towers[i];
+      let ringArr = [];
+      for (var j=0; j<tower.length; j++) {
+        ringArr.push(
+          <Ring
+            key={j}
+            ringId={j + 1}
+            vertPosition={j}
+            tower={i}
+            clickRing={this.clickRing}
+          />
+        );
+      }
 
-    for (var i=0; i<3; i++) {
-      towers.push(
+      towerArr.push(
         <Tower
           key={i}
           id={i}
-          towerId={`tower${i+1}`}
-          rings={ i===0 ? [5, 4, 3, 2, 1] : []}
-          clickRing={this.clickRing}
+          towerId={`tower${i}`}
+          rings={ringArr}
         />
-      )
+      );
     }
 
-    return towers;
+    return towerArr;
   }
   
   // Allows user to drag and drop rings between towers
@@ -65,9 +69,21 @@ class App extends Component {
     let startX = event.clientX;
     let endX = 0;
 
-    document.onmousemove = dragRing;
-    document.onmouseup = dropRing;
-  
+    // Get initial tower/ring configuration
+    let towers = $this.props.towers;
+
+    // Check if ring is on top of pile and therefore moveable
+    if (towers[startTower].indexOf(ringId) === towers[startTower].length - 1) {
+      
+      // If ring is moveable, initiate event handlers
+      document.onmousemove = dragRing;
+      document.onmouseup = dropRing;
+    }
+    else {
+      return;
+    }
+
+    // Handles ring being dragged 
     function dragRing(event) {
       endX = event.clientX;
 
@@ -75,22 +91,21 @@ class App extends Component {
       document.onmouseup = dropRing;
     }
 
-    function dropRing() {
-
-      // Get center of subject ring
-      let ringRect = document.getElementById(ringId).getBoundingClientRect();
-      let ringCenter = (ringRect.left + ringRect.right) / 2;
+    // Handles ring being dropped
+    function dropRing() {  
 
       // Get extents of tower wrappers
       let tower1 = document.getElementById("towerWrapper1").getBoundingClientRect();
       let tower2 = document.getElementById("towerWrapper2").getBoundingClientRect();
       let tower3 = document.getElementById("towerWrapper3").getBoundingClientRect();
 
-      // Get initial tower/ring configuration
-      let towers = $this.props.towers;
       let endTower = startTower;
-     
-      // Locate center of ring when dropped to identify tower on which it was dropped
+
+      // Get center of subject ring
+      let ringRect = document.getElementById(ringId).getBoundingClientRect();
+      let ringCenter = (ringRect.left + ringRect.right) / 2;
+
+      // Locate center of ring to identify tower on which it was dropped
       if (ringCenter >= tower1.left && ringCenter < tower1.right) {
         endTower = 0;
       } 
@@ -101,17 +116,12 @@ class App extends Component {
         endTower = 2;
       }
 
-      // Remove ring from starting tower
-      let idx = towers[startTower].indexOf(ringId);
-      towers[startTower].splice(idx, 1);
-    
-      // Place ring on ending tower
-      towers[endTower].push(ringId);
-
+      // Remove event handlers
       document.onmousemove = null;
       document.onmouseup = null;
 
-      $this.props.moveRing(towers);
+      // Call moveRing action
+      $this.props.moveRing(startTower, endTower);
     }
   }
 

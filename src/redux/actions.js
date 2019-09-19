@@ -10,17 +10,18 @@ export const RESET = "RESET";
 
 // ACTION CREATORS
 // Functions that create actions.
-export const moveRing = (towers) => {
+export const moveRing = (startTower, endTower) => {
     return {
         type: MOVE,
-        payload: towers,
+        payload: {
+            startTower,
+            endTower
+        }
     }
 }
 
 export const resetGame = () => {
-    let towers = [[5, 4, 3, 2, 1], [], []];
     return {
-        type: RESET,
-        payload: towers,
+        type: RESET
     }
 }
