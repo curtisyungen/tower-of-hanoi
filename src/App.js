@@ -49,35 +49,27 @@ class App extends Component {
           towerId={`tower${i+1}`}
           rings={ i===0 ? [5, 4, 3, 2, 1] : []}
           clickRing={this.clickRing}
-          clickTower={this.clickTower}
         />
       )
     }
 
     return towers;
   }
-
-  clickTower = (event) => {
-    event.preventDefault();
-    // console.log(event.clientX, event.clientY);
-  }
-
+  
   // Allows user to drag and drop rings between towers
-  clickRing = (ringId, tower, event) =>  {
+  clickRing = (ringId, startTower, event) =>  {
     event.preventDefault();
 
     let $this = this;
     let ring = document.getElementById(ringId);
-    let startTower = tower, endTower = tower;
-    let startX = event.clientX, startY = event.clientY;
-    let endX = 0, endY = 0;
+    let startX = event.clientX;
+    let endX = 0;
 
     document.onmousemove = dragRing;
     document.onmouseup = dropRing;
   
     function dragRing(event) {
       endX = event.clientX;
-      endY = event.clientY;
 
       ring.style.left = `${(endX - startX)}px`;
       document.onmouseup = dropRing;
@@ -88,27 +80,37 @@ class App extends Component {
       // Get center of subject ring
       let ringRect = document.getElementById(ringId).getBoundingClientRect();
       let ringCenter = (ringRect.left + ringRect.right) / 2;
-      let ringWidth = ring.offsetWidth;
 
-      // Get extents of tower wrappers to determine where ring was dropped
+      // Get extents of tower wrappers
       let tower1 = document.getElementById("towerWrapper1").getBoundingClientRect();
       let tower2 = document.getElementById("towerWrapper2").getBoundingClientRect();
       let tower3 = document.getElementById("towerWrapper3").getBoundingClientRect();
+
+      // Get initial tower/ring configuration
+      let towers = $this.props.towers;
+      let endTower = startTower;
      
+      // Locate center of ring when dropped to identify tower on which it was dropped
       if (ringCenter >= tower1.left && ringCenter < tower1.right) {
-        ring.style.left = `${tower1.right - 306}px`;
+        endTower = 0;
       } 
       else if (ringCenter >= tower2.left && ringCenter < tower2.right) {
-        ring.style.left = `${tower2.right - 306}px`;
+        endTower = 1;
       }
       else if (ringCenter >= tower3.left && ringCenter < tower3.right) {
-        ring.style.left = `${tower3.right - 306}px`;
+        endTower = 2;
       }
+
+      // Remove ring from starting tower
+      let idx = towers[startTower].indexOf(ringId);
+      towers[startTower].splice(idx, 1);
+    
+      // Place ring on ending tower
+      towers[endTower].push(ringId);
 
       document.onmousemove = null;
       document.onmouseup = null;
 
-      let towers = [[4, 3, 2, 1], [5], []];
       $this.props.moveRing(towers);
     }
   }

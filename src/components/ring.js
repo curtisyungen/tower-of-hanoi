@@ -1,5 +1,10 @@
 import React from "react";
 
+// ringId: integer, the number identifier of each ring, numbered 1-5
+// vertPosition: integer, ring's vertical position on its tower
+// tower: integer, the tower that the ring is currently on
+// clickRing: function, allows ring to be dragged and dropped
+
 const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
     return (
         <div 
@@ -11,11 +16,10 @@ const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
                 bottom: `${vertPosition * 50}px`,
                 cursor: "pointer",
                 height: "50px",
-                left: `${tower * 25}%`,
                 position: "absolute",
                 transform: `translate(${-(ringId * 30) + 25}px)`,
                 width: `${ringId * 60}px`,
-                zIndex: 100,
+                zIndex: 10,
             }}
         >
             {ringId}

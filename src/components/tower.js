@@ -1,7 +1,12 @@
 import React from "react";
 import Ring from "./ring";
 
-const Tower = ({ id, towerId, rings = [], clickRing, clickTower }) => {
+// id: integer, the numerical identifier of the tower, numbered 0 - 2
+// towerId: string, name identifier of the tower, i.e. 'tower1', 'tower2', 'tower3'
+// rings: array, rings that are currently on the tower
+// clickRing: function, allows each ring to be dragged and dropped. Passed down to child element.
+
+const Tower = ({ id, towerId, rings = [], clickRing }) => {
     return (
         <div 
         id={`towerWrapper${id+1}`}
@@ -17,7 +22,6 @@ const Tower = ({ id, towerId, rings = [], clickRing, clickTower }) => {
             <div 
                 id={towerId}
                 className={`tower`}
-                onClick={clickTower}
                 style={{
                     backgroundColor: "black",
                     height: "500px",
@@ -33,7 +37,7 @@ const Tower = ({ id, towerId, rings = [], clickRing, clickTower }) => {
                         key={index}
                         ringId={ring}
                         vertPosition={index}
-                        tower={towerId}
+                        tower={id}
                         clickRing={clickRing}
                     />
                 ))}
