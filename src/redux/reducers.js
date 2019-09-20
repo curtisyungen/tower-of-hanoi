@@ -28,7 +28,7 @@ const reducer = (state = initialState, action) => {
 
             // If start tower is same as end tower, return state
             if (state.towers[action.payload.startTower] === state.towers[action.payload.endTower]) {
-                return state.towers;
+                return state;
             }
 
             // Get rings on starting and ending towers
@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
             // Prevent larger ring from being placed on smaller one
             if (endTopRing < startTopRing) {
                 alert("Cannot place larger ring on smaller one, you dolt!");
-                return state.towers;
+                return state;
             }
 
             // Get all rings on starting and ending towers and store in new array
