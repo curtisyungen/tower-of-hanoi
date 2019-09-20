@@ -62,6 +62,9 @@ const reducer = (state = initialState, action) => {
             newTowers[action.payload.startTower] = newStartArr;
             newTowers[action.payload.endTower] = newEndArr;
 
+            console.log("State", state);
+            console.log("New Towers", newTowers);
+
             // Return new object containing updated state
             return Object.assign({}, state, {
                 towers: newTowers
