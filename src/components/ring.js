@@ -8,7 +8,7 @@ import React from "react";
 const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
 
     let style = {
-        backgroundColor: `rgb(${255}, ${204 + (ringId * 10)}, ${90 + (ringId * 10)})`,
+        backgroundColor: `rgb(${255}, ${224 - (ringId * 10)}, ${130 - (ringId * 15)})`,
         borderLeft: "2px solid darkgray",
         borderRight: "2px solid darkgray",
         borderRadius: "4px",
