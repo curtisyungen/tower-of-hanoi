@@ -12,9 +12,8 @@ const Tower = ({ id, towerId, rings = [] }) => {
             id={`towerWrapper${id+1}`}
             className="towerWrapper" 
             style={{
-                border: "1px solid lightgray",
+                borderBottom: "10px solid black",
                 display: "inline-block",
-                height: "551px",
                 position: "relative",
                 width: "300px",
             }}
