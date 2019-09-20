@@ -28,7 +28,6 @@ const reducer = (state = initialState, action) => {
 
             // If start tower is same as end tower, return state
             if (state.towers[action.payload.startTower] === state.towers[action.payload.endTower]) {
-                this.forceUpdate();
                 return state;
             }
 
