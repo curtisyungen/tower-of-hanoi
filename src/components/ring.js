@@ -9,8 +9,8 @@ const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
 
     let style = {
         backgroundColor: `rgb(${255}, ${254 - (ringId * 10)}, ${170 - (ringId * 15)})`,
-        borderLeft: "2px solid palegoldenrod",
-        borderRight: "2px solid palegoldenrod",
+        borderLeft: "2px solid #fff377",
+        borderRight: "2px solid #fff377",
         borderRadius: "4px",
         bottom: `${(vertPosition * 50)}px`,
         color: "#000",
