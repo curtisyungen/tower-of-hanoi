@@ -33,6 +33,8 @@ class App extends Component {
     let towerArr = [];
     let towers = this.props.towers;
 
+    console.log("Towers", towers);
+
     // Loop through each tower array and render its rings
     for (var i=0; i<towers.length; i++) {
       let tower = towers[i];
@@ -156,7 +158,7 @@ class App extends Component {
             Reset
           </button>
         </div>
-        
+
       </div>
     )
   }
