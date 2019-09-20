@@ -42,7 +42,9 @@ const reducer = (state = initialState, action) => {
             // Prevent larger ring from being placed on smaller one
             if (endTopRing < startTopRing) {
                 alert("Cannot place larger ring on smaller one, you dolt!");
-                return state;
+                return Object.assign({}, state, {
+                    towers: state.towers,
+                });
             }
 
             // Get all rings on starting and ending towers and store in new array
@@ -61,9 +63,6 @@ const reducer = (state = initialState, action) => {
             // Update new towers array with new starting and ending towers
             newTowers[action.payload.startTower] = newStartArr;
             newTowers[action.payload.endTower] = newEndArr;
-
-            console.log("State", state.towers);
-            console.log("New Towers", newTowers);
 
             // Return new object containing updated state
             return Object.assign({}, state, {
