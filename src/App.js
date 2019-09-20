@@ -138,10 +138,16 @@ class App extends Component {
   render() {
     return (
       <div className="mainContainer">
+
+        {/* Title */}
         <h1>Towers of Hanoi</h1>
+
+        {/* Towers */}
         <div className="towersContainer" id="towersContainer">
           {this.getTowers()}
         </div>
+
+        {/* Reset Button */}
         <div className="resetButton">
           <button
             className="btn btn-danger btn-sm resetButton"
@@ -150,6 +156,7 @@ class App extends Component {
             Reset
           </button>
         </div>
+        
       </div>
     )
   }
