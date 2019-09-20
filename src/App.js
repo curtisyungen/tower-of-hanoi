@@ -32,6 +32,7 @@ class App extends Component {
   getTowers = () => {
     let towerArr = [];
     let towers = this.props.towers;
+
     for (var i=0; i<towers.length; i++) {
       let tower = towers[i];
       let ringArr = [];
@@ -39,7 +40,7 @@ class App extends Component {
         ringArr.push(
           <Ring
             key={j}
-            ringId={j + 1}
+            ringId={tower[j]}
             vertPosition={j}
             tower={i}
             clickRing={this.clickRing}
@@ -66,8 +67,6 @@ class App extends Component {
 
     let $this = this;
     let ring = document.getElementById(ringId);
-    let startX = event.clientX;
-    let endX = 0;
 
     // Get initial tower/ring configuration
     let towers = $this.props.towers;
@@ -83,11 +82,12 @@ class App extends Component {
       return;
     }
 
+    let startTowerLeft = document.getElementById(`tower${startTower}`).getBoundingClientRect().left;
+
     // Handles ring being dragged 
     function dragRing(event) {
-      endX = event.clientX;
-
-      ring.style.left = `${(endX - startX)}px`;
+      ring.style.left = `${(event.clientX - startTowerLeft + 100)}px`;
+      ring.style.top = `${(event.clientY - 103)}px`;
       document.onmouseup = dropRing;
     }
 
