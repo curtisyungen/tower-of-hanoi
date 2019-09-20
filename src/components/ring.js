@@ -6,26 +6,29 @@ import React from "react";
 // clickRing: function, allows ring to be dragged and dropped
 
 const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
+
+    let style = {
+        backgroundColor: `rgb(${255}, ${204 + (ringId * 10)}, ${90 + (ringId * 10)})`,
+        borderLeft: "2px solid darkgray",
+        borderRight: "2px solid darkgray",
+        borderRadius: "4px",
+        bottom: `${(vertPosition * 50)}px`,
+        color: "#000",
+        cursor: "pointer",
+        height: "50px",
+        left: "124px",
+        position: "absolute",
+        transform: `translate(${-(ringId * 30) + 25}px)`,
+        width: `${ringId * 60}px`,
+        zIndex: 10,
+    };
+
     return (
         <div 
             id={ringId}
             className={`ring`}
             onMouseDown={(event) => clickRing(ringId, tower, event)}
-            style={{
-                backgroundColor: `rgb(${255}, ${204 + (ringId * 10)}, ${90 + (ringId * 10)})`,
-                borderLeft: "2px solid darkgray",
-                borderRight: "2px solid darkgray",
-                borderRadius: "4px",
-                bottom: `${(vertPosition * 50)}px`,
-                color: "#000",
-                cursor: "pointer",
-                height: "50px",
-                left: "124px",
-                position: "absolute",
-                transform: `translate(${-(ringId * 30) + 25}px)`,
-                width: `${ringId * 60}px`,
-                zIndex: 10,
-            }}
+            style={style}
         >
             {ringId}
         </div>

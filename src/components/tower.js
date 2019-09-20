@@ -7,30 +7,35 @@ import Ring from "./ring";
 // clickRing: function, allows each ring to be dragged and dropped. Passed down to child element.
 
 const Tower = ({ id, towerId, rings = [] }) => {
+
+    let wrapperStyle = {
+        borderBottom: "10px solid black",
+        display: "inline-block",
+        position: "relative",
+        width: "300px",
+    }
+
+    let towerStyle = {
+        backgroundColor: "black",
+        height: "500px",
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "50px",
+        width: "50px",
+        zIndex: 1,
+    }
+
     return (
         <div 
             id={`towerWrapper${id+1}`}
             className="towerWrapper" 
-            style={{
-                borderBottom: "10px solid black",
-                display: "inline-block",
-                position: "relative",
-                width: "300px",
-            }}
+            style={wrapperStyle}
         >
             {rings}
             <div 
                 id={towerId}
                 className={`tower`}
-                style={{
-                    backgroundColor: "black",
-                    height: "500px",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    marginTop: "50px",
-                    width: "50px",
-                    zIndex: 1,
-                }}
+                style={towerStyle}
             />
         </div>
     )
