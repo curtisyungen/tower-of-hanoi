@@ -41,9 +41,10 @@ const reducer = (state = initialState, action) => {
 
             // Prevent larger ring from being placed on smaller one
             if (endTopRing < startTopRing) {
-                alert("Cannot place larger ring on smaller one, you dolt!");
+                // alert("Cannot place larger ring on smaller one, you dolt!");
+                let sameTowers = state.towers.slice(0);
                 return Object.assign({}, state, {
-                    towers: state.towers,
+                    towers: sameTowers,
                 });
             }
 
