@@ -33,6 +33,7 @@ class App extends Component {
     let towerArr = [];
     let towers = this.props.towers;
 
+    // Loop through each tower array and render its rings
     for (var i=0; i<towers.length; i++) {
       let tower = towers[i];
       let ringArr = [];
@@ -48,6 +49,7 @@ class App extends Component {
         );
       }
 
+      // Push each individual tower into the main tower array
       towerArr.push(
         <Tower
           key={i}
@@ -82,6 +84,7 @@ class App extends Component {
       return;
     }
 
+    // Get left coordinate of starting tower
     let startTowerLeft = document.getElementById(`tower${startTower}`).getBoundingClientRect().left;
 
     // Handles ring being dragged 
@@ -114,6 +117,9 @@ class App extends Component {
       }
       else if (ringCenter >= tower3.left && ringCenter < tower3.right) {
         endTower = 2;
+      }
+      else {
+        endTower = startTower;
       }
 
       // Remove event handlers
