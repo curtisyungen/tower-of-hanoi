@@ -12,7 +12,7 @@ const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
             className={`ring`}
             onMouseDown={(event) => clickRing(ringId, tower, event)}
             style={{
-                backgroundColor: "gold",
+                backgroundColor: `rgb(${100}, ${79 + (ringId * 10)}, ${21 + (ringId * 10)})`,
                 borderLeft: "2px solid darkgray",
                 borderRight: "2px solid darkgray",
                 borderRadius: "4px",
