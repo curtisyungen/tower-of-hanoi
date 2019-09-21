@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./src/images/" alt="logo" />
+  <img src="./src/images/logo.png" alt="logo" />
 </p>
 
 # Towers of Hanoi
