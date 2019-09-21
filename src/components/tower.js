@@ -1,5 +1,4 @@
 import React from "react";
-import Ring from "./ring";
 
 // id: integer, the numerical identifier of the tower, numbered 0 - 2
 // towerId: string, name identifier of the tower, i.e. 'tower1', 'tower2', 'tower3'
