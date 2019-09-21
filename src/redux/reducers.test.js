@@ -2,6 +2,12 @@ import reducer from "./reducers";
 
 const DEF_STATE = { towers: [ [ 5, 4, 3, 2, 1 ], [], [] ] };
 
+// ====================================================================
+// TESTS
+// A couple reducer tests using JestJS
+// https://jestjs.io/
+// ====================================================================
+
 test("test default state", () => {
     let test_action = {
         type: "TEST_ACTION",
