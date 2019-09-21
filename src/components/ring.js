@@ -8,7 +8,8 @@ import React from "react";
 const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
 
     let style = {
-        backgroundColor: `rgb(${255}, ${255 - (ringId * 14)}, ${100 - (ringId * 10)})`,
+        // backgroundColor: `rgb(${255}, ${255 - (ringId * 14)}, ${100 - (ringId * 10)})`,
+        backgroundImage: `linear-gradient(to right, rgb(255, 230, 101), rgb(${255}, ${255 - (ringId * 14)}, ${100 - (ringId * 10)}))`,
         border: "1px solid rgb(100, 79, 31)",
         borderRadius: "4px",
         bottom: `${(vertPosition * 50)}px`,
