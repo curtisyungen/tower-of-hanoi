@@ -92,20 +92,22 @@ class App extends Component {
     // Get lateral and vertical position of towersContainer
     let containerLeft = document.getElementById("towersContainer").offsetLeft;
     let containerOffsetTop = document.getElementById("towersContainer").offsetTop;
+
+    // Get dimensions of ring
     let ringHeight = ring.offsetHeight;
     let ringWidth = ring.offsetWidth;
 
     // Get left coordinate of starting tower
     let startTowerLeft = document.getElementById(`tower${startTower}`).getBoundingClientRect().left;
 
-    // Handles ring being dragged 
+    // Handle ring dragging
     function dragRing(event) {
-      ring.style.left = `${(event.clientX - startTowerLeft + containerLeft + ringWidth / 2)}px`;
-      ring.style.top = `${(event.clientY - containerOffsetTop - ringHeight / 2)}px`;
+      ring.style.left = `${(event.clientX - startTowerLeft + containerLeft + ringWidth)}px`;
+      ring.style.top = `${(event.clientY - containerOffsetTop - ringHeight)}px`;
       document.onmouseup = dropRing;
     }
 
-    // Handles ring being dropped
+    // Handle ring being dropped
     function dropRing() {  
 
       // Get extents of tower wrappers
