@@ -15,7 +15,7 @@ The Tower of Hanoi is a mathematical puzzle consisting of three rods and five di
 
 Read more here: https://en.wikipedia.org/wiki/Tower_of_Hanoi.
 
-Check out the deployed project here: https://tower-of-hanoi-cjy.herokuapp.com.
+**Check out the deployed project here:** https://tower-of-hanoi-cjy.herokuapp.com.
 
 <hr/>
 
