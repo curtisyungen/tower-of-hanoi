@@ -71,9 +71,9 @@ class App extends Component {
     let ring = document.getElementById(ringId);
 
     // Get vertical position of towersContainer
-    let containerTop = document.getElementById("towersContainer").getBoundingClientRect().offsetTop;
-    let containerLeft = document.getElementById("towersContainer").getBoundingClientRect().offsetLeft;
-    console.log(containerTop, containerLeft);
+    let containerTop = document.getElementById("towersContainer").getBoundingClientRect();
+    let containerLeft = document.getElementById("towersContainer").getBoundingClientRect();
+    console.log(containerTop);
 
     // Get initial tower/ring configuration
     let towers = $this.props.towers;
@@ -176,7 +176,7 @@ class App extends Component {
 
         {/* Title */}
         <h1>Towers of Hanoi</h1>
-        <p class="lead">Move all five rings to the right-most tower.</p>
+        <p className="lead">Move all five rings to the right-most tower.</p>
 
         {/* Towers */}
         <div className="towersContainer" id="towersContainer">
