@@ -7,13 +7,15 @@
 
 September 2019
 
-The Tower of Hanoi is a mathematical game or puzzle consisting of three tower and five discs of different sizes. The puzzle begins with all five discs stacked on the left-most tower. The objective of the game is to move the entire stack to the right-most tower while abiding by three simple rules: 
+The Tower of Hanoi is a mathematical puzzle consisting of three rods and five disks of different sizes. The puzzle begins with all five disks stacked on the leftmost rod. The objective of the game is to move the entire stack to the rightmost rod while abiding by three simple rules: 
 
 1. Only one disk can be moved at a time.
 2. Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
 3. No larger disk may be placed on top of a smaller disk.
 
-Read more here: https://en.wikipedia.org/wiki/Tower_of_Hanoi
+Read more here: https://en.wikipedia.org/wiki/Tower_of_Hanoi.
+
+Check out the deployed project here: https://tower-of-hanoi-cjy.herokuapp.com.
 
 <hr/>
 
