@@ -174,34 +174,40 @@ class App extends Component {
 
   render() {
     return (
-      <div className="mainContainer">
+      <span>
+        <div className="mainContainer">
 
-        {/* Title */}
-        <h1>Towers of Hanoi</h1>
-        <p className="lead">Move all five rings to the right-most tower.</p>
+          {/* Title */}
+          <h1>Towers of Hanoi</h1>
+          <p className="lead">Move all five rings to the right-most tower.</p>
 
-        {/* Towers */}
-        <div className="towersContainer" id="towersContainer">
-          {this.getTowers()}
+          {/* Towers */}
+          <div className="towersContainer" id="towersContainer">
+            {this.getTowers()}
+          </div>
+
+          {/* Reset Button */}
+          <div className="resetButton">
+            <button
+              className="btn btn-danger btn-sm resetButton"
+              onClick={this.resetGame}
+            >
+              Reset
+            </button>
+          </div>
+
+          {/* Moves Counter */}
+          <div className="movesCounter">
+            {this.props.moves}
+            <p className="minMoves">This puzzle can be solved in 31 moves.</p>
+          </div>
+
         </div>
-
-        {/* Reset Button */}
-        <div className="resetButton">
-          <button
-            className="btn btn-danger btn-sm resetButton"
-            onClick={this.resetGame}
-          >
-            Reset
-          </button>
+        
+        <div className="mobileView">
+          <p className="mobileMsg">Screen must be wider than 520px pixels to view application.</p>
         </div>
-
-        {/* Moves Counter */}
-        <div className="movesCounter">
-          {this.props.moves}
-          <p className="minMoves">This puzzle can be solved in 31 moves.</p>
-        </div>
-
-      </div>
+      </span>
     )
   }
 }

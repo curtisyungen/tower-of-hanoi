@@ -16,6 +16,13 @@ body {
     margin-top: -5px;
 }
 
+.mobileView {
+    color: white;
+    display: none;
+    font-size: 48px;
+    text-align: center;
+}
+
 .movesCounter {
     color: white;
     font-size: 72px;
@@ -25,4 +32,14 @@ body {
     margin: 10px auto;
     min-height: 500px;
     min-width: 900px;
+}
+
+@media only screen and (max-width: 520px) {
+    .mainContainer {
+        display: none;
+    }
+
+    .mobileView {
+        display: block;
+    }
 }
