@@ -1,3 +1,8 @@
+body {
+    background-image: url("https://www.pexels.com/photo/photo-of-evergreen-forest-2606532/");
+    background-size: "cover";
+}
+
 .mainContainer {
     height: fit-content;
     margin: 25px auto;
