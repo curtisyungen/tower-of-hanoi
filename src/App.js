@@ -70,6 +70,11 @@ class App extends Component {
     let $this = this;
     let ring = document.getElementById(ringId);
 
+    // Get vertical position of towersContainer
+    let containerTop = document.getElementById("towersContainer").getBoundingClientRect().offsetTop;
+    let containerLeft = document.getElementById("towersContainer").getBoundingClientRect().offsetLeft;
+    console.log(containerTop, containerLeft);
+
     // Get initial tower/ring configuration
     let towers = $this.props.towers;
 
