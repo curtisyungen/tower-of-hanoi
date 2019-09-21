@@ -87,9 +87,8 @@ class App extends Component {
     // Get starting coordinates of selected ring
     let startX = ring.offsetLeft, startY = ring.offsetTop;
 
-    // Get dimensions of selected ring
+    // Get height of selected ring
     let ringHeight = ring.offsetHeight;
-    let ringWidth = ring.offsetWidth;
 
     // Get lateral and vertical position of towersContainer
     let containerLeft = document.getElementById("towersContainer").offsetLeft;
