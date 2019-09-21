@@ -105,11 +105,11 @@ class App extends Component {
       let tower2 = document.getElementById("towerWrapper2").getBoundingClientRect();
       let tower3 = document.getElementById("towerWrapper3").getBoundingClientRect();
 
-      let endTower = startTower;
-
       // Get center of subject ring
       let ringRect = document.getElementById(ringId).getBoundingClientRect();
       let ringCenter = (ringRect.left + ringRect.right) / 2;
+
+      let endTower = startTower;
 
       // Locate center of ring to identify tower on which it was dropped
       if (ringCenter >= tower1.left && ringCenter < tower1.right) {
@@ -145,9 +145,22 @@ class App extends Component {
 
       // Call moveRing action
       $this.props.moveRing(startTower, endTower);
+
+      // Check if game is complete
+      $this.checkIfComplete();
     }
   }
 
+  // Checks if right-most tower has five rings, which would signal game completion
+  checkIfComplete = () => {
+    let towers = this.props.towers;
+    if (towers[2].length === 5) {
+      alert("You did it. Cool.");
+      this.props.resetGame();
+    }
+  }
+
+  // Resets the game to initial conditions
   resetGame = () => {
     this.props.resetGame();
   }

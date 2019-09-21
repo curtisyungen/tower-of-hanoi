@@ -26,27 +26,12 @@ const reducer = (state = initialState, action) => {
     switch(action.type) {
         case MOVE:
 
-            // If start tower is same as end tower, return state
-            if (state.towers[action.payload.startTower] === state.towers[action.payload.endTower]) {
-                return state;
-            }
-
             // Get rings on starting and ending towers
             let startTowerArr = state.towers[action.payload.startTower];
             let endTowerArr = state.towers[action.payload.endTower];
 
             // Get topmost ring on starting and ending towers
             let startTopRing = startTowerArr.slice(-1)[0];
-            let endTopRing = endTowerArr.slice(-1)[0];
-
-            // Prevent larger ring from being placed on smaller one
-            if (endTopRing < startTopRing) {
-                // alert("Cannot place larger ring on smaller one, you dolt!");
-                let sameTowers = state.towers.slice(0);
-                return Object.assign({}, state, {
-                    towers: sameTowers,
-                });
-            }
 
             // Get all rings on starting and ending towers and store in new array
             let newStartArr = startTowerArr.slice(0);
