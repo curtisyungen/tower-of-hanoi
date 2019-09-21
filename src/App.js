@@ -33,8 +33,6 @@ class App extends Component {
     let towerArr = [];
     let towers = this.props.towers;
 
-    console.log("Towers", towers);
-
     // Loop through each tower array and render its rings
     for (var i=0; i<towers.length; i++) {
       let tower = towers[i];
@@ -86,6 +84,9 @@ class App extends Component {
       return;
     }
 
+    // Get starting coordinates of selected ring
+    let startX = ring.offsetLeft, startY = ring.offsetTop;
+
     // Get left coordinate of starting tower
     let startTowerLeft = document.getElementById(`tower${startTower}`).getBoundingClientRect().left;
 
@@ -127,6 +128,20 @@ class App extends Component {
       // Remove event handlers
       document.onmousemove = null;
       document.onmouseup = null;
+
+      // If ring is dropped on starting tower, snap it back to its original position
+      if (startTower === endTower) {
+        ring.style.left = `${startX}px`;
+        ring.style.top = `${startY}px`;
+        return;
+      }
+
+      // If ring is dropped on a ring of lesser value, prevent move and snap back to its original position
+      if (towers[endTower].slice(-1)[0] < towers[startTower].slice(-1)[0]) {
+        ring.style.left = `${startX}px`;
+        ring.style.top = `${startY}px`;
+        return;
+      }
 
       // Call moveRing action
       $this.props.moveRing(startTower, endTower);
