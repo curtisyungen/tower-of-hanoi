@@ -60,8 +60,6 @@ class App extends Component {
       );
     }
 
-    this.checkIfComplete();
-
     return towerArr;
   }
   
@@ -75,7 +73,7 @@ class App extends Component {
     // Get initial tower/ring configuration
     let towers = $this.props.towers;
 
-    // Check if ring is on top of pile and therefore moveable
+    // Check if selected ring is on top of pile and therefore moveable
     if (towers[startTower].indexOf(ringId) === towers[startTower].length - 1) {
       
       // If ring is moveable, initiate event handlers
@@ -89,20 +87,20 @@ class App extends Component {
     // Get starting coordinates of selected ring
     let startX = ring.offsetLeft, startY = ring.offsetTop;
 
+    // Get dimensions of selected ring
+    let ringHeight = ring.offsetHeight;
+    let ringWidth = ring.offsetWidth;
+
     // Get lateral and vertical position of towersContainer
     let containerLeft = document.getElementById("towersContainer").offsetLeft;
     let containerOffsetTop = document.getElementById("towersContainer").offsetTop;
-
-    // Get dimensions of ring
-    let ringHeight = ring.offsetHeight;
-    let ringWidth = ring.offsetWidth;
 
     // Get left coordinate of starting tower
     let startTowerLeft = document.getElementById(`tower${startTower}`).getBoundingClientRect().left;
 
     // Handle ring dragging
     function dragRing(event) {
-      ring.style.left = `${(event.clientX - startTowerLeft + containerLeft + ringWidth)}px`;
+      ring.style.left = `${(event.clientX - startTowerLeft + containerLeft + 100)}px`;
       ring.style.top = `${(event.clientY - containerOffsetTop - ringHeight)}px`;
       document.onmouseup = dropRing;
     }
@@ -157,7 +155,7 @@ class App extends Component {
       $this.props.moveRing(startTower, endTower);
 
       // Check if game is complete
-      // $this.checkIfComplete();
+      $this.checkIfComplete();
     }
   }
 
