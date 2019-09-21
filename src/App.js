@@ -171,6 +171,7 @@ class App extends Component {
 
         {/* Title */}
         <h1>Towers of Hanoi</h1>
+        <p class="lead">Move all five rings to the right-most tower.</p>
 
         {/* Towers */}
         <div className="towersContainer" id="towersContainer">
