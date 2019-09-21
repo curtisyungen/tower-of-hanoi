@@ -11,6 +11,13 @@ body {
     width: fit-content;
 }
 
+.movesCounter {
+    color: white;
+    float: right;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 48px;
+}
+
 .towersContainer {
     margin: 10px auto;
     min-height: 500px;

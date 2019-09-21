@@ -195,6 +195,11 @@ class App extends Component {
           </button>
         </div>
 
+        {/* Moves Counter */}
+        <div className="movesCounter">
+          {this.props.moves}
+        </div>
+
       </div>
     )
   }
