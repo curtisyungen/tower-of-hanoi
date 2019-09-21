@@ -11,6 +11,7 @@ const initialState = {
         [],
         [],
     ],
+    moves: 0
 }
 
 // ====================================================================
@@ -50,9 +51,14 @@ const reducer = (state = initialState, action) => {
             newTowers[action.payload.startTower] = newStartArr;
             newTowers[action.payload.endTower] = newEndArr;
 
+            // Add one move to total moves
+            let moves = state.moves + 1;
+            console.log(moves);
+
             // Return new object containing updated state
             return Object.assign({}, state, {
-                towers: newTowers
+                towers: newTowers,
+                moves: moves,
             });
 
         case RESET:
