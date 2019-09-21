@@ -145,6 +145,7 @@ class App extends Component {
 
       // If ring is dropped on a ring of lesser value, prevent move and snap back to its original position
       if (towers[endTower].slice(-1)[0] < towers[startTower].slice(-1)[0]) {
+        alert("Cannot place a larger ring on a smaller one.");
         ring.style.left = `${startX}px`;
         ring.style.top = `${startY}px`;
         return;
@@ -178,7 +179,7 @@ class App extends Component {
         <div className="mainContainer">
 
           {/* Title */}
-          <h1>Tower of Hanoi</h1>
+          <h1>Towers of Hanoi</h1>
           <p className="lead">Move all five rings to the rightmost tower.</p>
 
           {/* Towers */}
