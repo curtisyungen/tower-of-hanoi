@@ -16,7 +16,7 @@ const Tower = ({ id, towerId, rings = [] }) => {
     }
 
     let towerStyle = {
-        backgroundColor: "rgb(61, 61, 61)",
+        backgroundColor: "rgb(41, 41, 41)",
         borderTopLeftRadius: "4px",
         borderTopRightRadius: "4px",
         height: "500px",
