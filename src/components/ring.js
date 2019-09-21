@@ -9,15 +9,14 @@ const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
 
     let style = {
         backgroundColor: `rgb(${255}, ${255 - (ringId * 14)}, ${100 - (ringId * 10)})`,
-        borderLeft: "2px solid rgb(100, 79, 31)",
-        borderRight: "2px solid rgb(100, 79, 31)",
+        border: "1px solid rgb(100, 79, 31)",
         borderRadius: "4px",
-        borderTop: "1px solid rgb(100, 79, 31)",
         bottom: `${(vertPosition * 50)}px`,
         color: "#000",
         cursor: "pointer",
         height: "50px",
         left: "124px",
+        marginBottom: "1px",
         position: "absolute",
         transform: `translate(${-(ringId * 30) + 25}px)`,
         width: `${ringId * 60}px`,
