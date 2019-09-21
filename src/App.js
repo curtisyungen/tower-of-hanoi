@@ -198,6 +198,7 @@ class App extends Component {
         {/* Moves Counter */}
         <div className="movesCounter">
           {this.props.moves}
+          <p className="minMoves">This puzzle can be solved in 31 moves.</p>
         </div>
 
       </div>

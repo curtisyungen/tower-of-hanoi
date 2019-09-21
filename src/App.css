@@ -11,6 +11,10 @@ body {
     width: fit-content;
 }
 
+.minMoves {
+    font-size: 12px;
+}
+
 .movesCounter {
     color: white;
     font-size: 72px;
