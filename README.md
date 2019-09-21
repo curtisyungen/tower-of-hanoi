@@ -7,7 +7,11 @@
 
 September 2019
 
+The Towers of Hanoi is a mathematical game or puzzle consisting of three tower and five discs of different sizes. The puzzle begins with all five discs stacked on the left-most tower. The objective of the game is to move the entire stack to the right-most tower while abiding by three simple rules: 
 
+1. Only one disk can be moved at a time.
+2. Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
+3. No larger disk may be placed on top of a smaller disk.
 
 Read more here: https://en.wikipedia.org/wiki/Tower_of_Hanoi
 
@@ -22,7 +26,9 @@ Read more here: https://en.wikipedia.org/wiki/Tower_of_Hanoi
 ### NPM Dependencies
 1) express
 2) react-dom
-3) react-router
+3) react-redux
+4) react-scripts
+5) redux
 
 <hr/>
 
