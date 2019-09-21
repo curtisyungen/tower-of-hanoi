@@ -53,7 +53,6 @@ const reducer = (state = initialState, action) => {
 
             // Add one move to total moves
             let moves = state.moves + 1;
-            console.log(moves);
 
             // Return new object containing updated state
             return Object.assign({}, state, {
