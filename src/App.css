@@ -19,7 +19,8 @@ body {
 .mobileView {
     color: white;
     display: none;
-    font-size: 48px;
+    font-size: 24px;
+    margin-top: 200px;
     text-align: center;
 }
 
@@ -34,7 +35,17 @@ body {
     min-width: 900px;
 }
 
+@media only screen and (max-width: 910px) {
+    body {
+        background-size: auto;
+    }
+}
+
 @media only screen and (max-width: 520px) {
+    body {
+        background-size: cover;
+    }
+    
     .mainContainer {
         display: none;
     }
