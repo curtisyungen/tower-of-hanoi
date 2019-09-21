@@ -60,7 +60,7 @@ class App extends Component {
       );
     }
 
-    $this.checkIfComplete();
+    this.checkIfComplete();
 
     return towerArr;
   }
