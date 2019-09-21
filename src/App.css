@@ -13,9 +13,7 @@ body {
 
 .movesCounter {
     color: white;
-    float: right;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 48px;
+    font-size: 72px;
 }
 
 .towersContainer {
