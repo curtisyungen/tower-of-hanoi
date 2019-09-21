@@ -70,12 +70,11 @@ class App extends Component {
     let $this = this;
     let ring = document.getElementById(ringId);
 
-    // Get vertical position of towersContainer
-    let containerTop = document.getElementById("towersContainer").getBoundingClientRect().top;
+    // Get lateral and vertical position of towersContainer
     let containerLeft = document.getElementById("towersContainer").getBoundingClientRect().left;
     let containerOffsetTop = document.getElementById("towersContainer").offsetTop;
-    let containerOffsetLeft = document.getElementById("towersContainer").offsetLeft;
-    console.log(containerOffsetTop, containerOffsetLeft);
+
+    console.log(containerLeft, containerOffsetTop);
 
     // Get initial tower/ring configuration
     let towers = $this.props.towers;
@@ -100,7 +99,7 @@ class App extends Component {
     // Handles ring being dragged 
     function dragRing(event) {
       ring.style.left = `${(event.clientX - startTowerLeft + containerLeft)}px`;
-      ring.style.top = `${(event.clientY - containerTop)}px`;
+      ring.style.top = `${(event.clientY - containerOffsetTop)}px`;
       document.onmouseup = dropRing;
     }
 
