@@ -164,7 +164,6 @@ class App extends Component {
     let towers = this.props.towers;
     if (towers[2].length === 5) {
       alert("You did it. Cool.");
-      this.props.resetGame();
     }
   }
 
