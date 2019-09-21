@@ -29,9 +29,7 @@ const Ring = ({ ringId, vertPosition, tower, clickRing }) => {
             className={`ring`}
             onMouseDown={(event) => clickRing(ringId, tower, event)}
             style={style}
-        >
-            {ringId}
-        </div>
+        />
     )
 }
 
