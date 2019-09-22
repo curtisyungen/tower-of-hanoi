@@ -6,11 +6,15 @@ import Ring from "./components/ring";
 import { moveRing, resetGame } from "./redux/actions";
 import "./App.css";
 
+// mapStateToProps: used for selecting the part of the data from the store that the connected component needs.
+// Called every time store changes. Receives entire store state and returns an object with data that the component needs.
 const mapStateToProps = (state) => {
   let newState = Object.assign({}, state);
   return newState;
 }
 
+// mapDispatchToProps: used for dispatching actions to the store.
+// Lets you create functions that dispatch when called, and pass those functions as props to your component.
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     resetGame: resetGame,
