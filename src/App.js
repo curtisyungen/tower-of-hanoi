@@ -15,6 +15,9 @@ const mapStateToProps = (state) => {
 
 // mapDispatchToProps: used for dispatching actions to the store.
 // Lets you create functions that dispatch when called, and pass those functions as props to your component.
+
+// bindActionCreators: turns and object whose values are action creators into an object with the same keys,
+// but with every action creator wrapped into a dispatch call so they may be invoked directly.
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     resetGame: resetGame,
